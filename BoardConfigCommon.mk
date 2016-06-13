@@ -31,12 +31,15 @@ LOCAL_PATH := device/htc/m7-common
 
 TARGET_SPECIFIC_HEADER_PATH += device/htc/m7-common/include
 
+USE_CLANG_PLATFORM_BUILD := true
+
 # Kernel
 BOARD_KERNEL_BASE := 0x80600000
 BOARD_KERNEL_PAGESIZE := 2048
 BOARD_KERNEL_CMDLINE := console=none androidboot.hardware=qcom user_debug=31
 BOARD_MKBOOTIMG_ARGS := --ramdisk_offset 0x01800000
 TARGET_KERNEL_CONFIG := m7_defconfig
+TARGET_KERNEL_CROSS_COMPILE_PREFIX := arm-linux-androideabi-
 TARGET_KERNEL_SOURCE := kernel/htc/msm8960
 
 # Audio
@@ -83,6 +86,7 @@ TARGET_USERIMAGES_USE_F2FS := true
 
 # RIL
 BOARD_PROVIDES_LIBRIL := true
+BOARD_RIL_CLASS := ../../../$(LOCAL_PATH)/ril
 
 # SELinux
 -include device/qcom/sepolicy/sepolicy.mk
